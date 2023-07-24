@@ -1,0 +1,30 @@
+<ion-content *ngIf="usuario">
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="px-0" size="12" size-lg="8" size-md="8" size-sm="12" size-xs="12">
+        <ion-card color="colorduocamarillo" class="p-0 mx-1">
+          <ion-card-content>
+            <ion-card-title class="text-center fw-bold" mode="ios">PERFIL</ion-card-title>
+            <ion-avatar style="margin: 0 auto;" class="text-center item-avatar pt-3">
+              <img alt="Silhouette of a person's head" src="../../../assets/avatars/avatar-2.png" />
+            </ion-avatar>
+            <div class="text-center ion-text-uppercase pt-3">
+              <h4>{{usuario.nombre + ' ' + usuario.ap_paterno}}</h4>
+              <h4>{{usuario.rut}}</h4>
+              <h4>{{usuario.correo}}</h4>
+            </div>
+            <ion-card color="colorduocazul" class="p-0 m-0" *ngIf="usuario.tipo_usuario == 'alumno'">
+              <ion-card-content>
+                <div>
+                  <small>{{usuario.sede}}</small>
+                  <h5>{{usuario.escuela}}</h5>
+                  <h4>Carrera: {{usuario.carrera}}</h4>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

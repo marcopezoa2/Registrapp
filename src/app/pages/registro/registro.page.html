@@ -1,0 +1,174 @@
+<ion-header>
+  <ion-toolbar color="colorduocazul" class="pt-5">
+    <ion-buttons slot="start">
+      <ion-back-button text="" mode="ios" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title mode="ios">RegistrApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="text-center fw-bold">Registro de Usuarios</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="usuario" (ngSubmit)="registrarse()">
+        <ion-item>
+          <ion-label position="floating">RUT</ion-label>
+          <ion-input type="text" formControlName="rut" [(ngModel)]="dato.rut"
+            placeholder="Ej: 20.400.300-k"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input type="text" formControlName="nombre" [(ngModel)]="dato.nombre" placeholder="Ej: John"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Apellido</ion-label>
+          <ion-input type="text" formControlName="ap_paterno" [(ngModel)]="dato.ap_paterno"
+            placeholder="Ej: Serrano"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input type="email" formControlName="correo" [(ngModel)]="dato.correo"
+            placeholder="Ej: alumno@duocuc.cl"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="clave" [(ngModel)]="dato.clave"
+            placeholder="Ej: ********* "></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Repetir Contraseña</ion-label>
+          <ion-input type="password" [(ngModel)]="repetir_clave" [ngModelOptions]="{standalone: true}"
+            placeholder="Ambas contraseñas deben ser iguales "></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="normal">
+            Foto Usuario:
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button>
+              <label for="file-upload">
+                <ion-icon slot="icon-only" name="images"></ion-icon>
+              </label>
+              <input (change)="newImageUpload($event)" id="file-upload" style="display: none" type="file"
+                accept="image/*">
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+        <ion-item>
+          <img class="image" [src]="dato.foto">
+        </ion-item>
+        <div class="pt-2">
+          <ion-button (click)="registrarse()" type="submit" expand="block" color="primary">Registrar</ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
+
+
+
+
+
+
+
+<ion-footer>
+  <ion-toolbar color="colorduocazul">
+    <ion-title>Desarrollado por: Grupo 1</ion-title>
+  </ion-toolbar>
+</ion-footer>
+
+
+
+
+<!-- CARD QUE CONTIENE LOS DATOS DEL USUARIO ENCONTRADO POR ID -->
+<!-- <div *ngIf=nombre>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title class="text-center font-weight-bold">Usuario encontrado</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list color="secondary">
+          <ion-item>
+            <p>Rut: </p><p>{{rut}}</p>
+          </ion-item>
+          <ion-item>
+            <p>Nombre: </p><p>{{nombre}}</p>
+          </ion-item>
+          <ion-item>
+            <p>Apellido: </p><p>{{ap_paterno}}</p>
+          </ion-item>
+          <ion-item>
+            <p>Fecha Nacimiento:: </p><p>{{fecha_nac}}</p>
+          </ion-item>
+          <ion-item>
+            <p>Correo: </p><p>{{correo}}</p>
+          </ion-item>
+          <ion-item>
+            <p>Clave: </p><p>{{clave}}</p>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+      <div class="text-center item-align-center">
+        <ion-button (click)="eliminar(txtRut)" fill="clear" class="text-center">
+          <ion-icon slot="icon-only" color="danger" name="trash"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-card>
+  </div>
+
+  <div *ngIf="listado.length > 0">
+    <ion-card-header>
+      <ion-card-title class="text-center font-weight-bold">Listado de Usuarios</ion-card-title>
+    </ion-card-header>
+    <ion-card>
+      <ion-card-content *ngFor="let item of listado">
+        <ion-item>
+          <ion-label>Rut: {{item[0].rut}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Nombre: {{item[0].nombre}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Apellido: {{item[0].ap_paterno}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Fecha Nac.: {{item[0].fecha_nac}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Fono: {{item[0].fono}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>correo: {{item[0].correo}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>contraseña: {{item[0].password}}</ion-label>
+        </ion-item>
+        <hr>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+</ion-content> 
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="agregar(txtRut,txtNombre,txtApellido,txtNac,txtFono,txtCorreo,txtPassword)">
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+    </ion-button>
+
+  <ion-button (click)="buscar(txtRut)">
+    <ion-icon slot="icon-only" name="search"></ion-icon>
+  </ion-button>
+
+  <ion-button (click)="listar()" slot="end">
+    <ion-icon slot="icon-only" name="list"></ion-icon>
+  </ion-button>
+
+  </ion-toolbar>
+</ion-footer>-->

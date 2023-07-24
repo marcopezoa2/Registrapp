@@ -1,0 +1,160 @@
+{
+  "escuelas": [
+    {
+      "id": 1,
+      "nombre_escuela": "Informatica y Telecomunicaciones"
+    },
+    {
+      "id": 2,
+      "nombre_escuela": "Administración y Negocios"
+    }
+  ],
+  "carreras": [
+    {
+      "id": 1,
+      "nombre_carrera": "Analista Programador"
+    },
+    {
+      "id": 2,
+      "nombre_carrera": "Ingenieria en Informatica"
+    }
+  ],
+  "jornadas": [
+    {
+      "id": 1,
+      "nombre_jornada": "Diurna"
+    },
+    {
+      "id": 2,
+      "nombre_jornada": "Vespertina"
+    }
+  ],
+  "sedes": [
+    {
+      "id": 1,
+      "nombre_sede": "Puente Alto"
+    },
+    {
+      "id": 2,
+      "nombre_sede": "San Bernardo"
+    },
+    {
+      "id": 3,
+      "nombre_sede": "Vespucio"
+    }
+  ],
+  "asignaturas": [
+    {
+      "id": 1,
+      "nombre_asignatura": "Estadistica Descriptiva",
+      "sigla": "MAT4141"
+    },
+    {
+      "id": 2,
+      "nombre_asignatura": "Programación Aplicaciones Móviles",
+      "sigla": "PGY4121"
+    }
+  ],
+  "docentes": [
+    {
+      "rut": "14.449.992-1",
+      "nombre": "Valeria",
+      "ap_paterno": "Ruminot",
+      "correo": "docente@profesor.duoc.cl",
+      "clave": "docente",
+      "tipo_usuario": "docente","image": "https://rickandmortyapi.com/api/character/avatar/4.jpeg"
+    },
+    {
+      "rut": "16.080.026-7",
+      "nombre": "Carlos",
+      "ap_paterno": "Martin",
+      "correo": "docente@profesor.duoc.cl",
+      "clave": "docente",
+      "tipo_usuario": "docente",
+      "image": "https://rickandmortyapi.com/api/character/avatar/5.jpeg"
+    }
+  ],
+  "estudiantes": [
+    {
+      "id":1,
+      "rut": "17.851.727-9",
+      "nombre": "Marco",
+      "ap_paterno": "Pezoa",
+      "correo": "ma.pezoa@duocuc.cl",
+      "clave": "alumno",
+      "tipo_usuario": "alumno",
+      "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+      "url": "http://192.168.18.93:3000/estudiantes/1",
+      "sedes": {
+        "sedeId": 1,
+        "nombre_sede": "Puente Alto"
+      },
+      "jornadas": {
+        "jornadaId": 2,
+        "nombre_jornada": "Vespertino"
+      },
+      "carreras": {
+        "carreraId": 1,
+        "nombre_carrera": "Analista Programador"
+      },
+      "escuelas": {
+        "carreraId": 1,
+        "nombre_carrera": "Informatica y Telecomunicaciones"
+      }
+    },
+    {
+      "id":2,
+      "rut": "13.698.514-0",
+      "nombre": "Paulina",
+      "ap_paterno": "Espinoza",
+      "correo": "pa.espinazao@duocuc.cl",
+      "clave": "alumno",
+      "tipo_usuario": "alumno",
+      "image": "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
+      "url": "http://192.168.18.93:3000/estudiantes/2",
+      "sedes": {
+        "sedeId": 1,
+        "nombre_sede": "Puente Alto"
+      },
+      "jornadas": {
+        "jornadaId": 2,
+        "nombre_jornada": "Vespertino"
+      },
+      "carreras": {
+        "carreraId": 1,
+        "nombre_carrera": "Analista Programador"
+      },
+      "escuelas": {
+        "carreraId": 1,
+        "nombre_carrera": "Informatica y Telecomunicaciones"
+      }
+    },
+    {
+      "id":3,
+      "rut": "15.789.385-8",
+      "nombre": "Sebastian",
+      "ap_paterno": "Salgado",
+      "correo": "se.salgado@duocuc.cl",
+      "clave": "alumno",
+      "tipo_usuario": "alumno",
+      "image": "https://rickandmortyapi.com/api/character/avatar/9.jpeg",
+      "url": "http://192.168.18.93:3000/estudiantes/3",
+      "sedes": {
+        "sedeId": 1,
+        "nombre_sede": "Puente Alto"
+      },
+      "jornadas": {
+        "jornadaId": 2,
+        "nombre_jornada": "Vespertino"
+      },
+      "carreras": {
+        "carreraId": 1,
+        "nombre_carrera": "Analista Programador"
+      },
+      "escuelas": {
+        "carreraId": 1,
+        "nombre_carrera": "Informatica y Telecomunicaciones"
+      }
+    }
+  ]
+}

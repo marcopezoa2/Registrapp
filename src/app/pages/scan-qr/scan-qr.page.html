@@ -1,0 +1,57 @@
+<ion-content>
+  <!--ESCANER CODIGO QR CODIGO-->
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="px-0" size="12" size-lg="8" size-md="8" size-sm="12" size-xs="12">
+        <ion-card color="colorduocazul" class="p-0 mx-1">
+          <ion-card-content>
+            <ion-card-title class="text-center fw-bold" mode="ios">ASISTENCIA QR</ion-card-title>
+            <div class="p-1 m-0 text-center">
+              <video #video [hidden]="!scanActive" width="100%"></video>
+              <canvas #canvas hidden></canvas>
+              <div *ngIf="scanResult"></div>
+              <div class="text-center">{{ scanResult }}</div>
+            </div>
+            <ion-card color="colorduocgris" class="p-0 m-0" *ngIf="usuario.tipo_usuario == 'alumno'">
+              <ion-card-content>
+                <!-- boton para escanear el codigo, activa el video scaner-->
+                <div [hidden]="scanResult">
+                  <ion-button expand="block" type="submit" color="colorduocamarillo" (click)="startScan()">ESCANEAR QR
+                    <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+                  </ion-button>
+                </div>
+                <!-- boton para detener el scanner de QR-->
+                <div>
+                  <ion-button expand="block" (click)="stopScan()" color="danger" expand="block"
+                    *ngIf="scanActive">Detener
+                    <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+                  </ion-button>
+                </div>
+                <!-- boton para refrescar o actualizar-->
+                <div>
+                  <ion-button expand="block" (click)="reset()" color="colorduocamarillo" *ngIf="scanResult">Recargar
+                    <ion-icon slot="start" name="refresh-circle-outline"></ion-icon>
+                  </ion-button>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="px-0" size="12" size-lg="8" size-md="8" size-sm="12" size-xs="12">
+        <ion-card color="colorduocamarillo" class="p-0 mx-1">
+          <ion-card-content>
+            <div class="text-justify">
+              <p>Escanea el codigo QR publicado por tu docente para registrar tu asistencia a la clase. Luego puedes
+                cerrar la aplicación</p>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

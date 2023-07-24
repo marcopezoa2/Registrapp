@@ -1,0 +1,133 @@
+<ion-content>
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="px-0" size="12" size-lg="8" size-md="8" size-sm="12" size-xs="12">
+        <ion-card color="colorduocamarillo" class="p-0 mx-1">
+          <ion-card-content>
+            <ion-card-title class="text-center fw-bold" mode="ios">ASISTENCIA QR</ion-card-title>
+            <ion-card-content>
+              <div class="text-justify">
+                <p>Aqui podrás generar un QR de asistencia y proyectarlo en tu sala y revisar quienes se estan
+                  registrando. Tus
+                  alumnos solo deben Escanearlo</p>
+              </div>
+            </ion-card-content>
+            <div class="m-0">
+              <ion-list lines="full">
+                <ion-item>
+                  <ion-select required id="sede" name="sede" placeholder="Seleccione sede" [compareWith]="compareWith"
+                    [(ngModel)]="dato.sede" (ionChange)="obtenerValorSede($event)">
+                    <ion-select-option *ngFor="let usu of sede" [value]="usu">{{usu.name}}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item><ion-select required id="jornada" name="jornada" placeholder="Seleccione jornada"
+                    [compareWith]="compareWith" [(ngModel)]="dato.jornada" (ionChange)="obtenerValorJornada($event)">
+                    <ion-select-option *ngFor="let usu of jornada" [value]="usu">{{usu.name}}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-select required id="seccion" name="seccion" placeholder="Seleccione Sigla-Sección"
+                    [compareWith]="compareWith" [(ngModel)]="dato.seccion" (ionChange)="obtenerValorSeccion($event)">
+                    <ion-select-option *ngFor="let usu of asignatura"
+                      [value]="usu">{{usu.sigla_seccion}}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Inicio</ion-label>
+                  <div>
+                    <ion-datetime-button datetime="datetime1" slot="end"></ion-datetime-button>
+                    <ion-modal [keepContentsMounted]="true">
+                      <ng-template>
+                        <ion-datetime id="datetime1" required (ionChange)="obtenerValorhora_inicio($event)"
+                          [(ngModel)]="dato.hora_inicio"></ion-datetime>
+                      </ng-template>
+                    </ion-modal>
+                  </div>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Término</ion-label>
+                  <div>
+                    <ion-datetime-button datetime="datetime2" slot="end"></ion-datetime-button>
+                    <ion-modal [keepContentsMounted]="true">
+                      <ng-template>
+                        <ion-datetime id="datetime2" required (ionChange)="obtenerValorhora_termino($event)"
+                          [(ngModel)]="dato.hora_termino"></ion-datetime>
+                      </ng-template>
+                    </ion-modal>
+                  </div>
+                </ion-item>
+              </ion-list>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card color="colorduocgris" class="p-0 mx-1 pb-0">
+          <ion-card-content>
+            <div>
+              <div class="item-align-center text-center">
+                <!-- <ngx-qrcode [elementType]="elementType" [value]="value"></ngx-qrcode> -->
+
+                <ngx-qrcode [elementType]="elementType" [value]="value"></ngx-qrcode>
+
+
+                <!-- <ngx-qrcode [value]="value"></ngx-qrcode>
+                
+                <ngx-qrcode [elementType]="elementType" [value]="value" cssClass="aclass" errorCorrectionLevel="L">
+                </ngx-qrcode> -->
+                <!-- <qrcode [elementType]="elementType" [value]="value"></qrcode> -->
+              </div>
+              <div class="text-center item-align-center">
+                <ion-input [(ngModel)]="value" disabled="true"></ion-input>
+                <ion-button (click)="generarQR()" color="warning">Generar QR</ion-button>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="px-0" size="12" size-lg="8" size-md="8" size-sm="12" size-xs="12">
+        <ion-card color="colorduocgris" class="p-0 mx-1">
+          <ion-toolbar color="colorduocazul">
+            <ion-buttons slot="end">
+              <ion-button (click)="recargarlista()">
+                <ion-icon slot="icon-only" name="refresh"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            <ion-title>
+              <div class="logotoolbar">
+                Lista Asistentes
+              </div>
+            </ion-title>
+            <ion-progress-bar type="indeterminate"></ion-progress-bar>
+          </ion-toolbar>
+          <ion-card-content>
+            <div class="p-0 mx-1">
+              <div>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col class="col-12 p-0 mx-0">
+                      <ion-item *ngFor="let usuario of listaDeAsistentes">
+                        <ion-label>
+                          <h3>Rut: {{usuario.rut_estudiante}}</h3>
+                          <h3>Alumno: {{usuario.nombre_alumno}}</h3>
+                          <p>Fecha: {{usuario.fecha_asistencia.toDate()| date: 'd/M/yy h:mm:ss a' }}</p>
+                          <small>{{usuario.qr_asistencia}}</small>
+                        </ion-label>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

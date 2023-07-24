@@ -1,0 +1,20 @@
+
+.splash-animation{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  
+    .splash-img{
+      img{
+        max-width: 200px;
+      }
+      -webkit-animation:rotate-scale-up .65s linear both;animation:rotate-scale-up .65s linear both
+    }
+    @-webkit-keyframes rotate-scale-up{0%{-webkit-transform:scale(1) rotateZ(0);transform:scale(1) rotateZ(0)}50%{-webkit-transform:scale(2) rotateZ(180deg);transform:scale(2) rotateZ(180deg)}100%{-webkit-transform:scale(1) rotateZ(360deg);transform:scale(1) rotateZ(360deg)}}@keyframes rotate-scale-up{0%{-webkit-transform:scale(1) rotateZ(0);transform:scale(1) rotateZ(0)}50%{-webkit-transform:scale(2) rotateZ(180deg);transform:scale(2) rotateZ(180deg)}100%{-webkit-transform:scale(1) rotateZ(360deg);transform:scale(1) rotateZ(360deg)}}
+  }
+
+
+  ion-content{
+    --ion-background-color: #022A44;
+}

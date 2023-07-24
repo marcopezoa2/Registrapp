@@ -1,0 +1,91 @@
+<ion-content [fullscreen]="true">
+
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="px-0" size="12" size-lg="8" size-md="8" size-sm="12" size-xs="12">
+        <ion-card color="colorduocamarillo" class="p-0 mx-1">
+          <ion-card-content>
+            <ion-card-title class="text-center fw-bold" mode="ios">API ALUMNOS</ion-card-title>
+            <ion-item>
+              <p>Aqui podrás conocer a los alumnos que tienes registrados</p>
+            </ion-item>
+            <ion-item *ngFor="let usu of users">
+              <ion-item>
+                <ion-avatar slot="start">
+                  <img alt="Silhouette of a person's head" src="{{usu.foto}}" />
+                </ion-avatar>
+                <ion-label>{{usu.name + ' ' + usu.ap_paterno}}</ion-label>
+              </ion-item>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="px-0" size="12" size-lg="8" size-md="8" size-sm="12" size-xs="12">
+        <ion-card color="colorduocazul" class="p-0 mx-1">
+          
+            <ion-card>
+              <ion-card-header>
+                <ion-title>Generar Post</ion-title>
+              </ion-card-header>
+              <ion-item>
+                <ion-select placeholder="Seleccione usuario" [compareWith]="compareWith" [(ngModel)]="user">
+                  <ion-select-option *ngFor="let usu of users" [value]="usu">{{usu.name + ' ' +
+                    usu.ap_paterno}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-card>
+
+            <br>
+            <ion-card>
+              <ion-card-header>
+                <ion-title>Post</ion-title>
+              </ion-card-header>
+              <ion-item class="ion-padding-horizontal">
+                <ion-label position="floating">Titulo</ion-label>
+                <ion-input [(ngModel)]="post.title"></ion-input>
+              </ion-item>
+              <ion-item class="ion-padding-horizontal">
+                <ion-label position="floating">Cuerpo</ion-label>
+                <ion-textarea [(ngModel)]="post.body"></ion-textarea>
+              </ion-item>
+              <ion-grid>
+                <ion-row>
+                  <ion-col><ion-button color="colorduocamarillo" shape="round" expand="block">Limpiar</ion-button></ion-col>
+                  <ion-col><ion-button color="colorduocamarillo" shape="round" expand="block"
+                      (click)="guardarPost()">Guardar</ion-button></ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+            <ion-card>
+              <ion-list-header>
+                <ion-title>Post Recientes</ion-title>
+              </ion-list-header>
+              <ion-list>
+                <ion-item *ngIf="!posts" class="ion-padding custom-skeleton">
+                  <ion-label>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                  </ion-label>
+                </ion-item>
+                <ion-item *ngFor="let post of posts">
+                  <ion-label (click)="setPost(post)">
+                    <h4>{{post.title}}</h4>
+                    <p>{{post.body}}</p>
+                  </ion-label>
+                  <ion-button (click)="eleminarPost(post)" color="colorduocamarillo">
+                    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-list>
+            </ion-card>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

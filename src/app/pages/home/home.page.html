@@ -1,0 +1,51 @@
+<ion-content class="auth-form text-center">
+  <div class="bgAzulDuoc">
+    <img src="../../../assets/logoRegistrapp_home3.png" alt="">
+  </div>
+  <div class="my-3">
+    <ion-grid fixed>
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="px-0" size="12" size-lg="8" size-md="8" size-sm="12" size-xs="12">
+          <ion-card class="p-0 mx-1">
+            <ion-list>
+              <ion-card-header class="p-0 pt-2" mode="ios">
+                <ion-card-title color="colorduocamarillo">Bienvenidos</ion-card-title>
+                <ion-card-subtitle>Ingrese sus Datos</ion-card-subtitle>
+              </ion-card-header>
+              <form [formGroup]="usuario" (ngSubmit)="login()">
+                <div class="mb-3 mx-2">
+                  <ion-item>
+                    <ion-label position="floating">Correo</ion-label>
+                    <ion-input formControlName="correo" [(ngModel)]="credenciales.correo" type="text"
+                      placeholder="Ingrese correo"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="floating">Contraseña</ion-label>
+                    <ion-input formControlName="clave" [(ngModel)]="credenciales.clave" type="password"
+                      placeholder="Ingrese clave"></ion-input>
+                  </ion-item>
+                </div>
+                <div class="mx-3">
+                  <ion-button mode="ios" class="text-light" color="colorduocamarillo" type="submit"
+                    expand="block">Ingresar</ion-button>
+                </div>
+              </form>
+              <div class="ion-text-center pt-3">
+                <a routerLink="/forgot-password">Olvidé mi contraseña</a>
+              </div>
+            </ion-list>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+<ion-footer mode="md" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      <div class="logotoolbar">
+        <ion-img src="../../../assets/developers2.png"></ion-img>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

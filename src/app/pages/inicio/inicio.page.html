@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="colorduocazul" class="pt-5">
+    <ion-buttons slot="end">
+      <ion-button text="Cerrar Sesión" (click)="logout()">
+        <ion-icon slot="start" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="logotoolbar">
+        <ion-img src="../../../assets/logoRegistrapp.png" style="width: 100px;"></ion-img>
+      </div>
+    </ion-title>
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="usuario">
+  <div class="bgAzulDuoc text-center p-2 ">
+    <div class="swirl-in-fwd ">
+      <img src="../../../assets/registrapp.png" alt="logoregistrapp" width="110px">
+    </div>
+  </div>
+  <div class="ion-padding text-center">
+    <h1 class="font-weight-bold">!Bienvenido a RegistrAPP!</h1>
+    <div class="text-center p-3 mb-1">
+      <div class="bounce-in-top ">
+        <img src="../../../assets/logDuoc.png" alt="logoduoc" width="200px">
+      </div>
+    </div>
+    <h2>Hola! {{usuario.nombre + ' ' + usuario.ap_paterno}}</h2>
+    <div>
+      <p>Aplicación para Tomar asistencia con códigos QR</p>
+    </div>
+  </div>
+  <div>
+    <!-- TABS -->
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <!-- Tabs Perfil general de Usuarios -->
+        <ion-tab-button tab="perfil/{{usuario.rut}}">
+          <ion-icon name="person-circle-outline"></ion-icon>
+          <ion-label>Perfil</ion-label>
+        </ion-tab-button>
+        <!-- TABS para el uso de la API REST trae datos de JSON db.json -->
+        <ion-tab-button tab="estudiantes/{{usuario.rut}}" *ngIf="usuario.tipo_usuario == 'docente'">
+          <ion-icon name="people"></ion-icon>
+          <ion-label>Lista Alumnos</ion-label>
+        </ion-tab-button>
+        <!-- TABS para el uso de la camara para Scanear el codigo QR -->
+        <ion-tab-button tab="scan-qr/{{usuario.rut}}" *ngIf="usuario.tipo_usuario == 'alumno'">
+          <ion-icon name="qr-code"></ion-icon>
+          <ion-label>AsisQR</ion-label>
+        </ion-tab-button>
+        <!-- Tabs exclusivo de Docente para Generar el CodigoQr de la asistencia -->
+        <ion-tab-button tab="qrcode/{{usuario.rut}}" *ngIf="usuario.tipo_usuario == 'docente'">
+          <ion-icon name="qr-code"></ion-icon>
+          <ion-label>AsisQR</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
+</ion-content>
